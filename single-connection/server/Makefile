@@ -1,22 +1,22 @@
 # Client / Server Project
 
-PROJECT_NAME	=	server.out
-MAIN_NAME			= server.out
+PROJECT_NAME	= server.out
+MAIN_NAME		= server.out
 
-OBJ_DIR				= objects
-SRC_DIR				= src
-INC_DIR				= include
+OBJ_DIR			= objects
+SRC_DIR			= src
+INC_DIR			= include
 
-C_SOURCE			= $(wildcard ./$(SRC_DIR)/*.c)
-H_SOURCE			= $(wildcard ./$(INC_DIR)/*.h)
+C_SOURCE		= $(wildcard ./$(SRC_DIR)/*.c)
+H_SOURCE		= $(wildcard ./$(INC_DIR)/*.h)
 
-OBJ						= $(subst .c,.o,$(subst src,$(OBJ_DIR),$(C_SOURCE)))
+OBJ				= $(subst .c,.o,$(subst src,$(OBJ_DIR),$(C_SOURCE)))
 
-CC						= gcc
-CC_FLAGS			= -c					\
-							  -W					\
-							  -ansi				\
-							  -pedantic
+CC				= gcc
+CC_FLAGS		= -c	\
+				-W		\
+				-ansi	\
+				-pedantic
 
 # Command to clean
 RM = rm -rf

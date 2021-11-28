@@ -1,19 +1,19 @@
 # Client / Server Project
 
-PROJECT_NAME	=	tests.out
-MAIN_NAME			= tests.out
+PROJECT_NAME	= tests.out
+MAIN_NAME		= tests.out
 
-OBJ_DIR				= objects
-SRC_DIR				= src
-INC_DIR				= include
+OBJ_DIR			= objects
+SRC_DIR			= src
+INC_DIR			= include
 
-C_SOURCE			= $(wildcard ./$(SRC_DIR)/*.cpp)
-H_SOURCE			= $(wildcard ./$(INC_DIR)/*.hpp)
+C_SOURCE		= $(wildcard ./$(SRC_DIR)/*.cpp)
+H_SOURCE		= $(wildcard ./$(INC_DIR)/*.hpp)
 
-OBJ						= $(subst .cpp,.o,$(subst src,$(OBJ_DIR),$(C_SOURCE)))
+OBJ				= $(subst .cpp,.o,$(subst src,$(OBJ_DIR),$(C_SOURCE)))
 
-CC						= g++
-CC_FLAGS			= -c					\
+CC				= g++
+CC_FLAGS		= -c
 
 # Command to clean
 RM = rm -rf
