@@ -1,7 +1,7 @@
 # Client / Server Project
 
-PROJECT_NAME	=	tests
-MAIN_NAME			= tests
+PROJECT_NAME	=	tests.out
+MAIN_NAME			= tests.out
 
 OBJ_DIR				= objects
 SRC_DIR				= src

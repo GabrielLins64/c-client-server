@@ -1,7 +1,7 @@
 # Client / Server Project
 
-PROJECT_NAME	=	server
-MAIN_NAME			= server
+PROJECT_NAME	=	server.out
+MAIN_NAME			= server.out
 
 OBJ_DIR				= objects
 SRC_DIR				= src

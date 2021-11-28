@@ -1,2 +1,5 @@
 # Ignoring object files
 *.o
+
+# Ignoring binary files
+*.out

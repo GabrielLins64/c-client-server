@@ -1,18 +1,22 @@
 # Client / Server Project
 
-PROJECT_NAME	=	client
-MAIN_NAME		= client
+PROJECT_NAME	=	client.out
+MAIN_NAME			= client.out
 
-C_SOURCE		= $(wildcard ./src/*.c)
-H_SOURCE		= $(wildcard ./src/*.h)
+OBJ_DIR				= objects
+SRC_DIR				= src
+INC_DIR				= include
 
-OBJ					= $(subst .c,.o,$(subst src,objects,$(C_SOURCE)))
+C_SOURCE			= $(wildcard ./$(SRC_DIR)/*.c)
+H_SOURCE			= $(wildcard ./$(INC_DIR)/*.h)
 
-CC					= gcc
-CC_FLAGS		= -c			\
-						  -W			\
-						  -ansi		\
-						  -pedantic
+OBJ						= $(subst .c,.o,$(subst src,$(OBJ_DIR),$(C_SOURCE)))
+
+CC						= gcc
+CC_FLAGS			= -c					\
+							  -W					\
+							  -ansi				\
+							  -pedantic
 
 # Command to clean
 RM = rm -rf
@@ -24,20 +28,15 @@ RM = rm -rf
 all: objFolder $(PROJECT_NAME)
 
 $(PROJECT_NAME): $(OBJ)
-		@ echo 'Building binary using GCC linker: $@'
+		@ echo ' '
+		@ echo 'Building binary "$@" using GCC linker...'
 		$(CC) $^ -o $@
-		@ echo 'Finished building binary: $@'
-		@ echo ' '
+		@ echo 'Binary "$@" successfully built!'
 
-./objects/%.o: ./src/%.c ./src/%.h
-		@ echo 'Building target using GCC compiler: $<'
-		$(CC) $< $(CC_FLAGS) -o $@
-		@ echo ' '
-
-./objects/$(MAIN_NAME).o: ./src/$(MAIN_NAME).c $(H_SOURCE)
-		@ echo 'Building target using GCC compiler: $<'
-		$(CC) $< $(CC_FLAGS) -o $@
-		@ echo ' '
+$(OBJ_DIR)/%.o: ./$(SRC_DIR)/%.c
+		@ echo -n 'Building target using GCC compiler: $<... '
+		@ $(CC) $(CC_FLAGS) -I $(INC_DIR) $< -o $@
+		@ echo 'Success!'
 
 objFolder:
 		@ mkdir -p objects
