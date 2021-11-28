@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
     int sockfd, newsockfd, portno, clilen, n;
     const char *res = "From server: I got your message!";
     size_t res_size = 0;
+    int option = 1;
 
     /* The server reads characters from the socket connection into this buffer. */
     char buffer[256];
@@ -62,6 +63,8 @@ int main(int argc, char *argv[])
     {
         error("ERROR opening socket");
     }
+
+    setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
 
     /* The function bzero() sets all values in a buffer to zero. It takes two arguments, the first is a pointer to the buffer and the second is the size of the buffer. Thus, this line initializes serv_addr to zeros. */
     bzero((char *) &serv_addr, sizeof(serv_addr));
@@ -128,6 +131,9 @@ int main(int argc, char *argv[])
     {
         error("ERROR writing to socket");
     }
+
+    close(sockfd);
+    close(newsockfd);
 
     return 0;
 }
